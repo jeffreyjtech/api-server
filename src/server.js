@@ -10,9 +10,11 @@ app.use(express.json());
 // Import modules
 const logger = require('./middleware/logger');
 
+const magikarpRoute = require('./routes/magikarp');
+const speciesRoute = require('./routes/species');
+
 const handle404 = require('./error-handlers/404');
 const handle500 = require('./error-handlers/500');
-const magikarpRoute = require('./routes/magikarp');
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,6 +23,7 @@ app.use(logger);
 
 // Use route modules
 app.use(magikarpRoute);
+app.use(speciesRoute);
 
 // Use error-handler modules
 app.use(handle404);
