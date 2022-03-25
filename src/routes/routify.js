@@ -1,7 +1,7 @@
 'use strict';
 
 // This module exports a function called routify
-// Its purpose is to create a full CRUD route set for a sequelize Collection
+// Its purpose is to return a full CRUD route set for a sequelize Collection to be used in Express middleware stack
 // The parameters are pathName and Collection
 // Ids for finding an object received via URL params
 // Data for POSTing or PUTing an object is received via a JSON request body
