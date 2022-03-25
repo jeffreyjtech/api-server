@@ -79,18 +79,22 @@ describe('Testing Magikarp collection', () => {
 describe('Testing Species collection', () => {
   let name = 'Magikarp';
   let dexId = 129;
-  let id = 1;
+  let primaryType = 'water';
 
   let testSpecies = {
     name,
-    shiny,
+    dexId,
+    primaryType,
   };
+
+  let id = 1;
+
 
   test('Should create a Species', async () => {
 
-    const magikarp = await SpeciesCollection.create(testSpecies);
+    const species = await SpeciesCollection.create(testSpecies);
 
-    expect(magikarp.name).toEqual(name);
+    expect(species.name).toEqual(name);
   });
 
   test('Should throw an unhandled error if passing in invalid data', async () => {
@@ -105,38 +109,38 @@ describe('Testing Species collection', () => {
     }
   });
 
-  test('Should get all Speciess', async () => {
+  test('Should get all Species', async () => {
 
-    const magikarpArray = await SpeciesCollection.readAll();
+    const speciesArray = await SpeciesCollection.readAll();
 
-    console.log(magikarpArray);
+    console.log(speciesArray);
 
-    expect(magikarpArray[0].name).toEqual(name);
+    expect(speciesArray[0].name).toEqual(name);
   });
 
   test('Should get one Species', async () => {
 
-    const magikarp = await SpeciesCollection.read(id);
+    const species = await SpeciesCollection.read(id);
 
-    console.log(magikarp);
+    console.log(species);
 
-    expect(magikarp.name).toEqual(name);
-    expect(magikarp.id).toEqual(id);
+    expect(species.name).toEqual(name);
+    expect(species.id).toEqual(id);
   });
 
   test('Should update a Species', async () => {
 
-    let newName = 'John';
+    let newPrimaryType = 'electric';
 
-    const magikarp = await SpeciesCollection.update(id, { name: newName });
+    const species = await SpeciesCollection.update(id, { name: newPrimaryType });
 
-    expect(magikarp.name).toEqual(newName);
+    expect(species.name).toEqual(newPrimaryType);
   });
 
   test('Should delete a Species', async () => {
 
-    const magikarp = await SpeciesCollection.delete(id);
+    const species = await SpeciesCollection.delete(id);
 
-    expect(magikarp).toEqual(null);
+    expect(species).toEqual(null);
   });
 });
