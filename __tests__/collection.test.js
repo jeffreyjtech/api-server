@@ -22,7 +22,6 @@ describe('Testing Magikarp collection', () => {
   };
 
   test('Should create a Magikarp', async () => {
-
     const magikarp = await MagikarpCollection.create(testMagikarp);
 
     expect(magikarp.name).toEqual(name);
@@ -41,26 +40,19 @@ describe('Testing Magikarp collection', () => {
   });
 
   test('Should get all Magikarps', async () => {
-
     const magikarpArray = await MagikarpCollection.readAll();
-
-    console.log(magikarpArray);
 
     expect(magikarpArray[0].name).toEqual(name);
   });
 
   test('Should get one Magikarp', async () => {
-
     const magikarp = await MagikarpCollection.read(id);
-
-    console.log(magikarp);
 
     expect(magikarp.name).toEqual(name);
     expect(magikarp.id).toEqual(id);
   });
 
   test('Should update a Magikarp', async () => {
-
     let newName = 'John';
 
     const magikarp = await MagikarpCollection.update(id, { name: newName });
@@ -69,7 +61,6 @@ describe('Testing Magikarp collection', () => {
   });
 
   test('Should delete a Magikarp', async () => {
-
     const magikarp = await MagikarpCollection.delete(id);
 
     expect(magikarp).toEqual(null);
@@ -91,7 +82,6 @@ describe('Testing Species collection', () => {
 
 
   test('Should create a Species', async () => {
-
     const species = await SpeciesCollection.create(testSpecies);
 
     expect(species.name).toEqual(name);
@@ -110,35 +100,27 @@ describe('Testing Species collection', () => {
   });
 
   test('Should get all Species', async () => {
-
     const speciesArray = await SpeciesCollection.readAll();
-
-    console.log(speciesArray);
 
     expect(speciesArray[0].name).toEqual(name);
   });
 
   test('Should get one Species', async () => {
-
     const species = await SpeciesCollection.read(id);
-
-    console.log(species);
 
     expect(species.name).toEqual(name);
     expect(species.id).toEqual(id);
   });
 
   test('Should update a Species', async () => {
-
     let newPrimaryType = 'electric';
 
-    const species = await SpeciesCollection.update(id, { name: newPrimaryType });
+    const species = await SpeciesCollection.update(id, { primaryType: newPrimaryType });
 
-    expect(species.name).toEqual(newPrimaryType);
+    expect(species.primaryType).toEqual(newPrimaryType);
   });
 
   test('Should delete a Species', async () => {
-
     const species = await SpeciesCollection.delete(id);
 
     expect(species).toEqual(null);
