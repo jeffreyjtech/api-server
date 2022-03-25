@@ -49,9 +49,23 @@ function routify (pathName, Collection) {
       let id = req.params.id;
       let newData = req.body;
 
-      console.log(`${pathName} : updating one instance with id: ${id}`);
+      console.log(`${pathName} : updating instance with id: ${id}`);
 
       let responseData = await Collection.update(id, newData);
+      res.status(200).send(responseData);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  router.delete(`${pathName}/:id`, async (req, res, next) => {
+    try {
+      let id = req.params.id;
+
+      console.log(`${pathName} : deleting instance with id: ${id}`);
+
+      let responseData = await Collection.delete(id);
+      
       res.status(200).send(responseData);
     } catch (err) {
       next(err);
