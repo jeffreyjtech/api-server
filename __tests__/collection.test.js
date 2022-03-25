@@ -25,9 +25,11 @@ describe('Testing Magikarp collection', () => {
     const magikarp = await MagikarpCollection.create(testMagikarp);
 
     expect(magikarp.name).toEqual(name);
+    expect(magikarp.shiny).toEqual(shiny);
+    expect(magikarp.id).toBeDefined();
   });
 
-  test('Should throw an unhandled error if passing in invalid data', async () => {
+  test('Should throw an unhandled error if data is not a valid Magikarp', async () => {
     let name = 'Billy Bob';
 
     expect.assertions(1);
@@ -43,12 +45,14 @@ describe('Testing Magikarp collection', () => {
     const magikarpArray = await MagikarpCollection.readAll();
 
     expect(magikarpArray[0].name).toEqual(name);
+    expect(magikarpArray[0].shiny).toEqual(shiny);
   });
 
   test('Should get one Magikarp', async () => {
     const magikarp = await MagikarpCollection.read(id);
 
     expect(magikarp.name).toEqual(name);
+    expect(magikarp.shiny).toEqual(shiny);
     expect(magikarp.id).toEqual(id);
   });
 
@@ -63,7 +67,7 @@ describe('Testing Magikarp collection', () => {
   test('Should delete a Magikarp', async () => {
     const magikarp = await MagikarpCollection.delete(id);
 
-    expect(magikarp).toEqual(null);
+    expect(magikarp).toStrictEqual(null);
   });
 });
 
@@ -85,10 +89,13 @@ describe('Testing Species collection', () => {
     const species = await SpeciesCollection.create(testSpecies);
 
     expect(species.name).toEqual(name);
+    expect(species.dexId).toEqual(dexId);
+    expect(species.primaryType).toEqual(primaryType);
+    expect(species.id).toBeDefined();
   });
 
-  test('Should throw an unhandled error if passing in invalid data', async () => {
-    let name = 'Billy Bob';
+  test('Should throw an unhandled error if data is not a valid Species', async () => {
+    let name = 'Unknown';
 
     expect.assertions(1);
 
@@ -103,12 +110,17 @@ describe('Testing Species collection', () => {
     const speciesArray = await SpeciesCollection.readAll();
 
     expect(speciesArray[0].name).toEqual(name);
+    expect(speciesArray[0].dexId).toEqual(dexId);
+    expect(speciesArray[0].primaryType).toEqual(primaryType);
+    expect(speciesArray[0].id).toBeDefined();
   });
 
   test('Should get one Species', async () => {
     const species = await SpeciesCollection.read(id);
 
     expect(species.name).toEqual(name);
+    expect(species.dexId).toEqual(dexId);
+    expect(species.primaryType).toEqual(primaryType);
     expect(species.id).toEqual(id);
   });
 
@@ -123,6 +135,6 @@ describe('Testing Species collection', () => {
   test('Should delete a Species', async () => {
     const species = await SpeciesCollection.delete(id);
 
-    expect(species).toEqual(null);
+    expect(species).toStrictEqual(null);
   });
 });
