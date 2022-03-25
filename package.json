@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --runInBand",
     "dev-test": "jest --watchAll --coverage",
     "db:config": "sequelize init:config",
     "db:create": "sequelize db:create"
