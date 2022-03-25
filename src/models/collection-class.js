@@ -6,14 +6,9 @@ class CollectionClass {
   }
 
   async create(json){
-    try {
-      let instance = await this.model.create(json);
+    let instance = await this.model.create(json);
 
-      return instance;
-    } catch (err) {
-      console.error(err.message);
-      return err;
-    }
+    return instance;
   }
 
   read() {
