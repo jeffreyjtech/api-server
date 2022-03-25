@@ -31,7 +31,32 @@ function routify (pathName, Collection) {
     }
   });
 
-  
+  router.get(`${pathName}/:id`, async (req, res, next) => {
+    try {
+      let id = req.params.id;
+
+      console.log(`${pathName} : reading one instance with id: ${id}`);
+
+      let responseData = await Collection.read(id);
+      res.status(200).send(responseData);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  router.put(`${pathName}/:id`, async (req, res, next) => {
+    try {
+      let id = req.params.id;
+      let newData = req.body;
+
+      console.log(`${pathName} : updating one instance with id: ${id}`);
+
+      let responseData = await Collection.update(id, newData);
+      res.status(200).send(responseData);
+    } catch (err) {
+      next(err);
+    }
+  });
 
   return router;
 }
