@@ -4,9 +4,11 @@ const supertest = require('supertest');
 const server = require('../src/server.js');
 const request = supertest(server.app);
 
-describe('Test block WIP', () => {
+describe('Testing that API returns error status on bad requests', () => {
 
-  test('Test WIP', async () => {
-    await request.get('/');
+  test('Test for 404 on bad route', async () => {
+    const response = request.get('/potato');
+
+    expect(response.status).toEqual(404);
   });
 });
