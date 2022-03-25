@@ -1,16 +1,16 @@
 'use strict';
 
-function routify (name, Collection) {
+function routify (path, Collection) {
 
   const express = require('express');
 
   const router = express.Router();
 
-  router.post(`/${name}`, async (req, res, next) => {
+  router.post(`/${path}`, async (req, res, next) => {
     try{
       let newData = req.body;
 
-      console.log(`${name} creating Instance`);
+      console.log(`${path} creating Instance`);
       
       let modelInstance = await Collection.create(newData);
 
