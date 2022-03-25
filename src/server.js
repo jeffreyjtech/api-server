@@ -11,6 +11,7 @@ app.use(express.json());
 const logger = require('./middleware/logger');
 
 const { MagikarpCollection } = require('./models');
+const { SpeciesCollection } = require('./models');
 
 const routify = require('./routes/routify');
 
@@ -24,7 +25,7 @@ app.use(logger);
 
 // Use route modules
 app.use(routify('magikarp', MagikarpCollection));
-app.use(routify('species'));
+app.use(routify('species', SpeciesCollection));
 
 // Use error-handler modules
 app.use(handle404);
