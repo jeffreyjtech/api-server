@@ -28,4 +28,30 @@ After installation, run `npm start`.
 
 ## Features / Routes
 
-WIP in progress
+*Work in progress* <!-- -->
+
+Routes for basic use are `/species` and `/magikarp`.
+
+API has full CRUD, so you can `GET`, `POST`, `PUT`, and `DELETE`.
+
+Add id param to route to `GET` one object, `DELETE`, and `PUT`.
+
+- `Species` schema:
+
+```json
+{
+  "name": "Bulbasaur", // Required
+  "dexId": 1, // Required
+  "primaryType": "grass", // Required
+  "secondaryType": "poison" // Not required
+}
+```
+
+- `Magikarp` schema:
+
+```json
+{
+  "name": "Golden boy", // Required
+  "shiny": true // Required
+}
+```
