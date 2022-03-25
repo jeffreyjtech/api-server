@@ -2,7 +2,7 @@
 
 An API server utilizing full CRUD, database abstractions, and associations.
 
-[Deployed API](https://jjtech-basic-api-server.herokuapp.com/)
+[Deployed API](https://jjtech-api-server.herokuapp.com/)
 
 UML DIAGRAM WIP
 <!-- ![UML Diagram](./assets/uml-401-lab-3.jpg) -->
