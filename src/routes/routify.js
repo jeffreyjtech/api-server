@@ -20,7 +20,7 @@ function routify (pathName, Collection) {
     }
   });
 
-  router.get(`${pathName}`, async (req, res, next) => {
+  router.get(`/${pathName}`, async (req, res, next) => {
     try {
       console.log(`${pathName} : reading all instances`);
 
@@ -31,7 +31,7 @@ function routify (pathName, Collection) {
     }
   });
 
-  router.get(`${pathName}/:id`, async (req, res, next) => {
+  router.get(`/${pathName}/:id`, async (req, res, next) => {
     try {
       let id = req.params.id;
 
@@ -44,7 +44,7 @@ function routify (pathName, Collection) {
     }
   });
 
-  router.put(`${pathName}/:id`, async (req, res, next) => {
+  router.put(`/${pathName}/:id`, async (req, res, next) => {
     try {
       let id = req.params.id;
       let newData = req.body;
@@ -58,14 +58,14 @@ function routify (pathName, Collection) {
     }
   });
 
-  router.delete(`${pathName}/:id`, async (req, res, next) => {
+  router.delete(`/${pathName}/:id`, async (req, res, next) => {
     try {
       let id = req.params.id;
 
       console.log(`${pathName} : deleting instance with id: ${id}`);
 
       let responseData = await Collection.delete(id);
-      
+
       res.status(200).send(responseData);
     } catch (err) {
       next(err);
