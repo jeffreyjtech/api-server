@@ -11,8 +11,10 @@ class CollectionClass {
     return instance;
   }
 
-  read() {
-    console.log('read method WIP');
+  async read(id) {
+    let instance = await this.model.findOne({where: {id: id}});
+
+    return instance;
   }
 
   async readAll() {
@@ -21,12 +23,21 @@ class CollectionClass {
     return allInstances;
   }
 
-  update() {
-    console.log('update method WIP');
+  async update(id, json) {
+
+    await this.model.update(json, {where: {id: id}});
+
+    let instance = await this.model.findOne({where: {id: id}});
+
+    return instance;
   }
 
-  delete() {
-    console.log('delete method WIP');
+  async delete(id) {
+    await this.model.destroy({where: {id: id}});
+
+    let instance = await this.model.findOne({where: {id: id}});
+
+    return instance;
   }
 }
 
