@@ -15,6 +15,12 @@ class CollectionClass {
     console.log('read method WIP');
   }
 
+  async readAll() {
+    let allInstances = await this.model.findAll();
+
+    return allInstances;
+  }
+
   update() {
     console.log('update method WIP');
   }
