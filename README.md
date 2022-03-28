@@ -5,7 +5,7 @@ An API server utilizing full CRUD, database abstractions, and associations.
 [Deployed API](https://jjtech-api-server.herokuapp.com/)
 
 UML DIAGRAM WIP
-<!-- ![UML Diagram](./assets/uml-401-lab-3.jpg) -->
+![UML Diagram](./assets/uml-401-lab-4.jpg)
 
 ## Installation
 
@@ -28,30 +28,64 @@ After installation, run `npm start`.
 
 ## Features / Routes
 
-*Work in progress* <!-- -->
+### Routes
 
-Routes for basic use are `/species` and `/magikarp`.
+- GET : `/magikarp[/:id]`
+  - Parameters
+    - Optional: an `id` param will specify a single record to return.
+  - Response
+    - status `200`, and a JSON body which is an array of all records in the table if `id` **is not** present, or a single record if `id` **is** present.
+      - body: `{ // refer to schema }`
+    - status `500`, `id` param is invalid.
 
-API has full CRUD, so you can `GET`, `POST`, `PUT`, and `DELETE`.
+- POST : `/magikarp`
+  - Request body
+    - Requires a JSON object with valid data shape and types per the `magikarp` schema.
+  - Response
+    - status `200`, and a JSON body of the record created in the DB.
+      - body: `{ // refer to schema }`
+    - status `500`, if JSON object is invalid per `magikarp` schema.
 
-Add id param to route to `GET` one object, `DELETE`, and `PUT`.
+- PUT : `/magikarp/:id`
+  - Parameters
+    - Requires `id` param to specify record to update.
+  - Request body
+    - Requires a JSON object with a valid key-value pair to update the record.
+  - Response
+    - status `200`, and a JSON body of the updated record in the DB.
+      - body: `{ // refer to schema }`
+    - status `500`, if `id` param is invalid.
 
-- `Species` schema:
+- DELETE : `/magikarp/:id`
+  - Parameters
+    - Requires `id` param to specify record to delete.
+  - Response
+    - status `200`, and an empty object`.
+      - body: `{}`
+    - status `500`, if `id` param is invalid.
 
-```json
+#### `/species`
+
+***The `/species` route has an identical endpoint set to `/magikarp`, except record data and request bodies will use the `species` schema***
+
+### Schemas
+
+#### `species` schema:
+
+```js
 {
-  "name": "Bulbasaur", // Required
-  "dexId": 1, // Required
-  "primaryType": "grass", // Required
-  "secondaryType": "poison" // Not required
+  name: "Bulbasaur", // Required
+  dexId: 1, // Required
+  primaryType: "grass", // Required
+  secondaryType: "poison" // Not required
 }
 ```
 
-- `Magikarp` schema:
+#### `magikarp` schema:
 
-```json
+```js
 {
-  "name": "Golden boy", // Required
-  "shiny": true // Required
+  name: "Golden boy", // Required
+  shiny: true // Required
 }
 ```
