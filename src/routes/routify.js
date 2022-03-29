@@ -7,11 +7,12 @@
 // Data for POSTing or PUTing an object is received via a JSON request body
 
 function routify (pathName, Collection) {
-
+  // to make a mini-app
+  // 1. Import express
   const express = require('express');
-
+  // 2. assign express.Router() to a variable
   const router = express.Router();
-
+  // 3. then add routes onto Router as if it were express.app
   router.post(`/${pathName}`, async (req, res, next) => {
     try{
       let newData = req.body;
